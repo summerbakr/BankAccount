@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+</head>
+<body>
+@model Transaction
+<h1>Welcome @ViewBag.LoggedInUser.FirstName!</h1>
+
+<form method="post" action="/accountactivity/@ViewBag.LoggedInUser.UserId">
+<p>Deposit/Withdraw: <input asp-for="Amount"/></p>
+<span asp-validation-for="Amount"></span>
+<input type="Submit" Value="Submit" />
+</form>
+
+<h2>Balance: @ViewBag.LoggedInUser.Balance</h2>
+<h1>Transactions</h1>
+<table>
+    <thead>
+        <th>Amount</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
+    @foreach(Transaction t in ViewBag.LoggedInUser.UserTransactions)
+    {
+        <tr>
+            <td>@t.Amount</td>
+            <td>@t.CreatedAt</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+    
+</body>
+</html>

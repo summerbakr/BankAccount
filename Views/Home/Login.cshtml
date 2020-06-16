@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returning User</title>
+</head>
+<body>
+    @model LoginUser
+     <h1>Hi! Welcome back. Please Log-In!</h1>
+
+    <form method="post" action="/processlogin">
+    <p>Returning User Email:<input type="text" asp-for="LoginEmail"/></p>
+    <span style="color:red;" asp-validation-for="LoginEmail"></span>
+    <p>Returning User Password:<input type="text" asp-for="LoginPassword"/></p>
+    <span style="color:red;" asp-validation-for="LoginPassword"></span>
+    <p><input type="submit" value="Login!"/></p>
+    </form>
+    
+    
+</body>
+</html>
